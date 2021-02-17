@@ -53,7 +53,9 @@ class QuizRepository extends BaseQuizRepository {
       return [];
     } on DioError catch (err) {
       print(err);
-      throw Failure(message: err.response?.statusMessage);
+      throw Failure(
+        message: err.response?.statusMessage ?? 'Something went wrong!',
+      );
     } on SocketException catch (err) {
       print(err);
       throw const Failure(message: 'Please check your connection.');

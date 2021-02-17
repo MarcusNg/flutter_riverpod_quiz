@@ -11,6 +11,7 @@ class QuizController extends StateNotifier<QuizState> {
   QuizController() : super(QuizState.initial());
 
   void submitAnswer(Question currentQuestion, String answer) {
+    if (state.answered) return;
     if (currentQuestion.correctAnswer == answer) {
       state = state.copyWith(
         selectedAnswer: answer,
